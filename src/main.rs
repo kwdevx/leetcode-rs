@@ -1,38 +1,23 @@
-use std::collections::{HashMap, HashSet};
+pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
+    let mut res = vec![1i32; nums.len()];
 
-pub fn top_k_frequent(nums: Vec<i32>, k: i32) -> Vec<i32> {
-    if nums.len() == k as usize {
-        return nums;
+    let mut prev = nums[0];
+    for (i, num) in nums.iter().enumerate().skip(1) {
+        res[i] = prev * res[i - 1];
+        prev = *num;
     }
 
-    let mut count_s = vec![HashSet::<i32>::new(); nums.len()];
-
-    let map = nums
-        .iter()
-        .fold(HashMap::<i32, i32>::new(), |mut acc, key| {
-            *acc.entry(*key).or_default() += 1;
-            acc
-        });
-
-    for (k, v) in map.iter() {
-        count_s[(*v - 1) as usize].insert(*k);
-    }
-
-    let mut res: Vec<i32> = vec![];
-
-    for i in (0..count_s.len()).rev() {
-        for x in count_s[i].iter() {
-            if res.len() == k as usize {
-                return res;
-            } else {
-                res.append(&mut vec![*x])
-            }
-        }
+    prev = nums[nums.len() - 1];
+    let mut postfix = 1;
+    for (i, num) in nums.iter().enumerate().rev().skip(1) {
+        postfix = prev * postfix;
+        res[i] *= postfix;
+        prev = *num;
     }
 
     res
 }
 
 fn main() {
-    println!("{:?}", top_k_frequent(vec![-1, -1], 1));
+    println!("{:?}", product_except_self(vec![1, 2, 3, 4]));
 }
