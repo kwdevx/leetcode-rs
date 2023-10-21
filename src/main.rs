@@ -1,23 +1,33 @@
-pub fn product_except_self(nums: Vec<i32>) -> Vec<i32> {
-    let mut res = vec![1i32; nums.len()];
-
-    let mut prev = nums[0];
-    for (i, num) in nums.iter().enumerate().skip(1) {
-        res[i] = prev * res[i - 1];
-        prev = *num;
+pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
+    if nums.len() == 0 {
+        return 0;
     }
 
-    prev = nums[nums.len() - 1];
-    let mut postfix = 1;
-    for (i, num) in nums.iter().enumerate().rev().skip(1) {
-        postfix = prev * postfix;
-        res[i] *= postfix;
-        prev = *num;
+    let mut res = 1;
+    let mut set = std::collections::HashSet::<i32>::new();
+
+    for n in nums {
+        set.insert(n);
+    }
+
+    for n in set.iter() {
+        if let None = set.get(&(*n - 1)) {
+            let mut i = 1;
+            while let Some(_) = set.get(&(*n + i)) {
+                i += 1
+            }
+
+            res = std::cmp::max(res, i);
+        }
     }
 
     res
 }
 
 fn main() {
-    println!("{:?}", product_except_self(vec![1, 2, 3, 4]));
+    // println!("{:?}", longest_consecutive(vec![100, 4, 200, 1, 3, 2]));
+    println!(
+        "{:?}",
+        longest_consecutive(vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1])
+    );
 }
