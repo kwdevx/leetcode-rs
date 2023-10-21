@@ -1,33 +1,43 @@
-pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
-    if nums.len() == 0 {
-        return 0;
-    }
+pub fn is_palindrome(s: String) -> bool {
+    let s: Vec<char> = s
+        .to_lowercase()
+        .chars()
+        .filter(|c| c.is_alphanumeric())
+        .collect();
 
-    let mut res = 1;
-    let mut set = std::collections::HashSet::<i32>::new();
+    // two pointers
+    //
+    // if s.len() == 0 {
+    //     return true;
+    // }
 
-    for n in nums {
-        set.insert(n);
-    }
+    // let (mut left, mut right) = (0, s.len() - 1);
 
-    for n in set.iter() {
-        if let None = set.get(&(*n - 1)) {
-            let mut i = 1;
-            while let Some(_) = set.get(&(*n + i)) {
-                i += 1
-            }
+    // while left < right {
+    //     if s.get(left) != s.get(right) {
+    //         return false;
+    //     }
+    //     left += 1;
+    //     right -= 1;
+    // }
 
-            res = std::cmp::max(res, i);
+    // functional
+
+    for (c1, c2) in s.iter().zip(s.iter().rev()) {
+        if c1 != c2 {
+            return false;
         }
     }
 
-    res
+    true
 }
 
 fn main() {
     // println!("{:?}", longest_consecutive(vec![100, 4, 200, 1, 3, 2]));
     println!(
         "{:?}",
-        longest_consecutive(vec![0, 3, 7, 2, 5, 8, 4, 6, 0, 1])
+        is_palindrome(String::from("A man, a plan, a canal: Panama"))
     );
+    println!("{:?}", is_palindrome(String::from("race a car")));
+    println!("{:?}", is_palindrome(String::from("0P")));
 }
