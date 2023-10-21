@@ -1,4 +1,5 @@
-use std::collections::HashMap;
+#![allow(dead_code)]
+use super::Solution;
 
 impl Solution {
     pub fn group_anagrams(strs: Vec<String>) -> Vec<Vec<String>> {
@@ -6,7 +7,7 @@ impl Solution {
         // bucket result as key, string as value in map
         // return map values as vec![vec!]
 
-        let mut map: HashMap<String, Vec<String>> = HashMap::new();
+        let mut map = std::collections::HashMap::<String, Vec<String>>::new();
 
         for s in strs {
             // strs[i].length <= 100, u8 = 256 is enough
@@ -31,4 +32,17 @@ impl Solution {
 
         map.into_values().collect()
     }
+}
+
+#[cfg(test)]
+#[test]
+fn main() {
+    assert_eq!(
+        Solution::group_anagrams(
+            ["eat", "tea", "tan", "ate", "nat", "bat"]
+                .map(String::from)
+                .to_vec(),
+        ),
+        vec![vec!["bat"], vec!["nat", "tan"], vec!["ate", "eat", "tea"]]
+    )
 }
