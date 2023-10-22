@@ -24,8 +24,8 @@ impl Solution {
                 None => {
                     map.insert(key, vec![s]);
                 }
-                Some(xx) => {
-                    xx.append(&mut vec![s]);
+                Some(arr) => {
+                    arr.push(s);
                 }
             }
         }

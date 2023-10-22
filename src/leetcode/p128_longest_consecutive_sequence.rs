@@ -15,8 +15,11 @@ impl Solution {
         }
 
         for n in set.iter() {
+            // if no prev num, it is the starting num
             if let None = set.get(&(*n - 1)) {
                 let mut i = 1;
+
+                // have next num
                 while let Some(_) = set.get(&(*n + i)) {
                     i += 1
                 }

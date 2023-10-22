@@ -28,7 +28,7 @@ impl Solution {
                 if res.len() == k as usize {
                     return res;
                 } else {
-                    res.append(&mut vec![*x])
+                    res.push(*x);
                 }
             }
         }
