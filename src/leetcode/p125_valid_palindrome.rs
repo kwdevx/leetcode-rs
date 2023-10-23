@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use super::Solution;
+struct Solution {}
 
 impl Solution {
     pub fn is_palindrome(s: String) -> bool {

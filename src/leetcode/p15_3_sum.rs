@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use super::Solution;
+struct Solution {}
 
 impl Solution {
     pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {

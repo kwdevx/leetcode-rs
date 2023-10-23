@@ -1,5 +1,5 @@
 #![allow(dead_code)]
-use super::Solution;
+struct Solution {}
 
 use std::collections::{HashMap, HashSet};
 

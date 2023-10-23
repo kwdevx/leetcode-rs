@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use super::Solution;
+struct Solution {}
 
 impl Solution {
     pub fn max_area(height: Vec<i32>) -> i32 {

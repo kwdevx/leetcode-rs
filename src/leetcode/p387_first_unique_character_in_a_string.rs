@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use super::Solution;
+struct Solution {}
 
 impl Solution {
     //  map and set solution
