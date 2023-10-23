@@ -10,3 +10,4 @@ mod p238_product_of_array_except_self;
 mod p242_valid_anagram;
 mod p347_top_kfrequent_elements;
 mod p49_group_anagram;
+mod p387_first_unique_character_in_a_string;
