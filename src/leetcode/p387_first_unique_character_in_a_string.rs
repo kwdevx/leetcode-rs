@@ -33,7 +33,7 @@ impl Solution {
     // }
 
     pub fn first_uniq_char(s: String) -> i32 {
-        let mut bucket = vec![0; 27];
+        let mut bucket = vec![0; 26];
 
         for (_, c) in s.chars().enumerate() {
             bucket[((c as u8) - ('a' as u8)) as usize] += 1;
