@@ -1,6 +1,4 @@
 #![allow(dead_code)]
-use std::vec;
-
 use super::Solution;
 
 impl Solution {
