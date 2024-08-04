@@ -3,6 +3,7 @@ mod p121_best_time_to_buy_and_sell_stock;
 mod p122_best_time_to_buy_and_sell_stock2;
 mod p125_valid_palindrome;
 mod p128_longest_consecutive_sequence;
+mod p130_surrounded_regions;
 mod p15_3_sum;
 mod p1_two_sum;
 mod p200_number_of_islands;
