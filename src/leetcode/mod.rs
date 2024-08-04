@@ -7,6 +7,8 @@ mod p130_surrounded_regions;
 mod p15_3_sum;
 mod p1_two_sum;
 mod p200_number_of_islands;
+mod p207_course_schedule;
+mod p210_course_schedule_II;
 mod p217_contains_duplicate;
 mod p238_product_of_array_except_self;
 mod p242_valid_anagram;
