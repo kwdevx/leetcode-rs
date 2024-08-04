@@ -95,7 +95,4 @@ fn main() {
         ]),
         4
     );
-
-    let x: usize = 0;
-    assert_eq!(x - 1, 0);
 }
