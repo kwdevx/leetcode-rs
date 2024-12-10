@@ -1,3 +1,4 @@
+mod p104_max_depth_of_btree;
 mod p11_container_with_most_water;
 mod p121_best_time_to_buy_and_sell_stock;
 mod p122_best_time_to_buy_and_sell_stock2;
@@ -22,5 +23,4 @@ mod p49_group_anagram;
 mod p543_diameter_of_binary_tree;
 mod p695_max_area_of_island;
 mod p76_minimum_window_substring;
-mod p104_max_depth_of_btree;
 mod p994_rotting_oranges;
