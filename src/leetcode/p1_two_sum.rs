@@ -14,7 +14,7 @@ impl Solution {
         }
 
         // base case
-        return vec![0, 1];
+        vec![0, 1]
     }
 }
 

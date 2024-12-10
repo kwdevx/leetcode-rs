@@ -20,7 +20,7 @@ mod p3_longest_substring_without_repeating_characters;
 mod p417_pacific_atlantic_water_flow;
 mod p424_longest_repeating_character_replacement;
 mod p49_group_anagram;
-mod p543_diameter_of_binary_tree;
+mod p543_diameter_of_btree;
 mod p695_max_area_of_island;
 mod p76_minimum_window_substring;
 mod p994_rotting_oranges;
