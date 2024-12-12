@@ -25,22 +25,22 @@ use std::cmp;
 use std::rc::Rc;
 impl Solution {
     pub fn diameter_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
-        fn max_depth(root: &Option<Rc<RefCell<TreeNode>>>) -> (i32, i32) {
-            if let Some(head) = root {
-                let rf = head.borrow();
-                let (r_depth, r_dia) = max_depth(&rf.right);
-                let (l_depth, l_dia) = max_depth(&rf.left);
-                let dia = l_depth + r_depth;
+        Self::max_depth(&root).1
+    }
 
-                let max_dia = cmp::max(l_dia, r_dia).max(dia);
-                let max_depth = cmp::max(l_depth, r_depth);
+    fn max_depth(root: &Option<Rc<RefCell<TreeNode>>>) -> (i32, i32) {
+        if let Some(head) = root {
+            let rf = head.borrow();
+            let (r_depth, r_dia) = Self::max_depth(&rf.right);
+            let (l_depth, l_dia) = Self::max_depth(&rf.left);
+            let dia = l_depth + r_depth;
 
-                (max_depth + 1, max_dia)
-            } else {
-                (0, 0)
-            }
+            let max_dia = cmp::max(l_dia, r_dia).max(dia);
+            let max_depth = cmp::max(l_depth, r_depth);
+
+            (max_depth + 1, max_dia)
+        } else {
+            (0, 0)
         }
-
-        max_depth(&root).1
     }
 }
