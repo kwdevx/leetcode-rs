@@ -15,6 +15,7 @@ mod p238_product_of_array_except_self;
 mod p242_valid_anagram;
 mod p253_meeting_rooms_ii;
 mod p2558_take_gifts_from_the_richest_pile;
+mod p2593_find_score_of_an_array_after_mark;
 mod p2770_max_beauty_of_array;
 mod p2981_find_longest_special_substring_that_occurs_thrice_i;
 mod p347_top_kfrequent_elements;
