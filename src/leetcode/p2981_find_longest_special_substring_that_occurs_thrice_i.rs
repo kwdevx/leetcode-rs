@@ -93,16 +93,46 @@ impl Solution {
 
         false
     }
+
+    pub fn maximum_length_3(s: String) -> i32 {
+        let mut s = s
+            .into_bytes()
+            .chunk_by(|a, b| a == b)
+            .map(|chunk| chunk.to_owned())
+            .collect::<Vec<_>>();
+        s.sort_unstable_by_key(|k| (k[0], std::cmp::Reverse(k.len())));
+
+        //  chunk by the same char, output &&Vec<u8>
+        s.chunk_by(|a, b| a[0] == b[0])
+            .flat_map(|chunk| {
+                chunk
+                    .iter()
+                    .take(3)
+                    .fold([0; 51], |mut freq, c| {
+                        // start from 1 as the bucket index is used as the frequency counter
+                        let temp = (1..=c.len()).rev().zip(1..4);
+
+                        for (i, count) in temp {
+                            freq[i] += count;
+                        }
+                        freq
+                    })
+                    .into_iter()
+                    .rposition(|f| f > 2)
+            })
+            .max()
+            .map_or(-1, |f| f as _)
+    }
 }
 
 #[cfg(test)]
 #[test]
 fn main() {
-    // assert_eq!(
-    //     Solution::maximum_length_2(String::from(
-    //         "cccerrrecdcdccedecdcccddeeeddcdcddedccdceeedccecde"
-    //     )),
-    //     2
-    // );
-    assert_eq!(Solution::maximum_length_2(String::from("aaabbaaa")), 2);
+    assert_eq!(
+        Solution::maximum_length_3(String::from(
+            "cccccerrrecccccdcdccedecdcccccddeeeddcdcddedccdceeedccecde"
+        )),
+        5
+    );
+    assert_eq!(Solution::maximum_length_3(String::from("aaabbaaa")), 2);
 }
